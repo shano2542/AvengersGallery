@@ -1,0 +1,115 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('./Images/avengers.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    width: 800px;
+    height: 500px;
+    background: #000;
+    transition: 0.25s;
+}
+
+.container .box {
+    position: relative;
+    background: var(--img);
+    background-position: center;
+    background-size: cover;
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container:hover .box {
+    filter: grayscale(1);
+}
+
+.container .box:hover {
+    filter: grayscale(0) brightness(1);
+}
+
+.container:has(.a1:hover) {
+    grid-template-columns: 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+.container:has(.a2:hover) {
+    grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+.container:has(.a3:hover) {
+    grid-template-columns: 0.5fr 0.5fr 2fr 0.5fr 0.5fr 0.5fr;
+}
+
+.container:has(.a4:hover) {
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 2fr 0.5fr 0.5fr;
+}
+
+.container:has(.a5:hover) {
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 2fr 0.5fr;
+}
+
+.container:has(.a6:hover) {
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 2fr;
+}
+
+.container .box::before {
+    content: '';
+    width: 100%;
+    height: calc(100% + 2px);
+    background: linear-gradient(#000, transparent, transparent, transparent, #000);
+}
+
+
+
+.container .box:nth-child(even) {
+    transform: translateY(30px);
+}
+
+.container .box:nth-child(odd) {
+    transform: translateY(-30px);
+}
+
+.container .box::after {
+    content: attr(data-text);
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 5px 10px;
+    white-space: nowrap;
+    transition: 0.5s;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-family: montserrat;
+    opacity: 0;
+}
+
+.container .box:nth-child(odd)::after {
+    bottom: -50px;
+}
+
+.container .box:nth-child(odd):hover::after {
+    opacity: 1;
+    bottom: -50;
+}
+
+.container .box:nth-child(even)::after {
+    top: -100px;
+}
+
+.container .box:nth-child(even):hover::after {
+    opacity: 1;
+    top: -50px;
+}
